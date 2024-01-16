@@ -1,0 +1,46 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body,
+html {
+    overflow-x: hidden;
+    max-width: 100vw;
+    min-height: 100vh;
+}
+
+html {
+    font-size: 62.5%;
+    font-weight: $fw-regular;
+    font-family: $ff-primary;
+    color: black;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    list-style: none;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+    color: inherit;
+}
+
+img {
+    display: block;
+}
+
+.hidden {
+    display: none !important;
+}

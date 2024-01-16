@@ -1,0 +1,558 @@
+.main-page {
+    width: 100%;
+
+    & > * {
+        width: 100%;
+    }
+
+    @include minScreenSize($bp-laptop) {
+        max-width: 160rem;
+        padding-left: 2.4rem;
+        padding-right: 2.4rem;
+        margin: 0 auto;
+    }
+}
+
+.main_page .intro-section,
+.suggestion-section,
+.limitation-section {
+    padding-left: 2.35rem;
+    padding-right: 2.35rem;
+
+    // @include minScreenSize($bp-tablet) {
+    //     padding-left: 4.1rem;
+    //     padding-right: 4.1rem;
+    // }
+}
+
+.article-section,
+.limitation-section {
+    @include minScreenSize($bp-laptop) {
+        padding-left: min(14rem, 9.5vw);
+        padding-right: min(14rem, 9.5vw);
+    }
+}
+
+.intro-section,
+.suggestion-section {
+    @include minScreenSize($bp-laptop) {
+        padding-left: min(11.6rem, 8.5%);
+        padding-right: min(11.6rem, 8.5%);
+    }
+}
+
+.intro-section {
+    position: relative;
+    background: $color-gradient-light;
+    padding-top: 3.2rem;
+    padding-bottom: 21.7rem;
+    @include flexCenter(column);
+    gap: 2.4rem;
+    text-align: center;
+    border-radius: 0 0 3.5rem 3.5rem;
+    margin-bottom: 55.2rem;
+
+    @include minScreenSize($bp-tablet) {
+        padding-bottom: 32.6rem;
+        margin-bottom: 27.7rem;
+
+        &__title {
+            width: 50%;
+        }
+    }
+
+    @include minScreenSize($bp-laptop) {
+        @include maxWidth(72%);
+        margin-bottom: 6.5rem;
+        padding-top: 7.5rem;
+        padding-bottom: 20rem;
+        padding-right: 39.7rem;
+        gap: 3.5rem;
+        align-items: flex-start;
+        text-align: left;
+
+        &__title {
+            width: 100%;
+            min-width: 41rem;
+        }
+
+        &__article {
+            width: 100%;
+            min-width: 41rem;
+        }
+    }
+
+    &__logo {
+        @include minScreenSize($bp-tablet) {
+            margin-bottom: 4rem;
+        }
+    }
+}
+
+.bmi-calculator {
+    position: absolute;
+    top: 72%;
+    z-index: 2;
+    background-color: $color-primary;
+    border-radius: 1.6rem;
+    padding: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    box-shadow: 16px 32px 56px 0px $color-shadow-blue;
+
+    @include minScreenSize($bp-tablet) {
+        @include maxWidth(68.6rem);
+        top: 60%;
+        padding: 3.2rem;
+        gap: 3.2rem;
+        text-align: left;
+    }
+
+    @include minScreenSize($bp-laptop) {
+        top: 15%;
+        left: min(72%, 50vw);
+        max-width: 60%;
+        min-width: 45rem;
+    }
+
+    &__units {
+        width: 100%;
+        display: flex;
+        gap: 5.3rem;
+
+        @include minScreenSize($bp-tablet) {
+            gap: 2.4rem;
+        }
+    }
+
+    &__results {
+        padding: 3.2rem;
+        background-color: $color-blue-accent;
+        border-radius: 1.6rem;
+        display: flex;
+        gap: 0.8rem;
+        flex-direction: column;
+        align-items: flex-start;
+
+        @include minScreenSize($bp-tablet) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-radius: 1.6rem 100rem 100rem 1.6rem;
+
+            .result-description {
+                grid-column: 2;
+                grid-row: 1 / span 2;
+            }
+        }
+
+        .result-description {
+            margin-top: 2.4rem;
+            text-align: left;
+
+            @include minScreenSize($bp-tablet) {
+                margin-top: 0;
+            }
+        }
+    }
+
+    &__welcome-section {
+        padding: 3.2rem;
+        background-color: $color-blue-accent;
+        border-radius: 1.6rem;
+        display: flex;
+        gap: 0.8rem;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+
+        @include minScreenSize($bp-tablet) {
+            border-radius: 1.6rem 100rem 100rem 1.6rem;
+        }
+    }
+}
+
+.radio-input {
+    display: flex;
+    gap: 1.8rem;
+
+    @include minScreenSize($bp-tablet) {
+        flex: 1;
+    }
+}
+
+input[type="radio"] {
+    width: 3.1rem;
+    height: 3.1rem;
+    appearance: none;
+    border-radius: 50%;
+    border: 0.1rem solid $color-grey-light;
+    margin: 0;
+    cursor: pointer;
+}
+
+input[type="radio"]:hover {
+    border: 0.1rem solid $color-blue-accent;
+}
+
+input[type="radio"]:checked {
+    appearance: none;
+    border-radius: 50%;
+    background-color: $color-blue-accent;
+    border: 0.8rem solid $color-blue-accent-light;
+}
+
+.bmi-calculator-input-section-metric {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    @include minScreenSize($bp-tablet) {
+        flex-direction: row;
+    }
+
+    &__input {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+
+        &--field {
+            width: 100%;
+            padding: 2rem 2.4rem;
+            border-radius: 1.2rem;
+            border: 0.1rem solid $color-grey-light;
+            display: flex;
+        }
+
+        &--unit {
+            font-size: $font-size-l;
+            color: $color-blue-accent;
+            font-weight: $fw-bold;
+            position: absolute;
+            right: 2.4rem;
+            top: 50%;
+        }
+    }
+}
+
+.bmi-calculator-input-section-imperial {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    &__input {
+        display: grid;
+        justify-items: flex-start;
+        column-gap: 1.6rem;
+        row-gap: 0.8rem;
+        grid-template-columns: 1fr 1fr;
+
+        &--label {
+            grid-column: span 2;
+        }
+
+        &--field {
+            width: 100%;
+            padding: 2rem 2.4rem;
+            border-radius: 1.2rem;
+            border: 0.1rem solid $color-grey-light;
+        }
+
+        .wraper {
+            position: relative;
+
+            .unit {
+                font-size: $font-size-l;
+                color: $color-blue-accent;
+                font-weight: $fw-bold;
+                position: absolute;
+
+                top: 30%;
+                left: 76%;
+            }
+        }
+    }
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border: 0.1rem solid $color-blue-accent;
+}
+
+// Section Two
+
+.article-section {
+    margin-bottom: 7.16rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // @include minScreenSize($suggestion-section-bp-tablet) {
+    //     flex-direction: row;
+    //     gap: 7.5rem;
+    // }
+
+    @include minScreenSize($bp-laptop) {
+        gap: 2rem;
+        padding-left: 7rem;
+        padding-right: 7rem;
+        margin-bottom: 9.6rem;
+    }
+
+    @include minScreenSize(1165px) {
+        gap: min(13.1rem, 9vw);
+        padding-left: min(14rem, 9.5vw);
+        padding-right: min(14rem, 9.5vw);
+    }
+
+    .flex-group {
+        background-color: dodgerblue;
+        padding: 0 2.35rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3.2rem;
+        // position: absolute;
+        // top: 90px;
+
+        @include minScreenSize($bp-laptop) {
+            position: relative;
+            gap: 3.5rem;
+            @include maxWidth(46.5rem);
+        }
+    }
+
+    &__image {
+        @include maxWidth(37.5rem);
+        margin-bottom: 4.8rem;
+
+        @include minScreenSize($bp-tablet) {
+            background-color: yellowgreen;
+            min-width: 40rem;
+            // margin-left: -40rem;
+            // margin-bottom: 0;
+            // margin-top: 0;
+            margin-left: -7rem;
+        }
+
+        @include minScreenSize($bp-laptop) {
+            max-width: 56.4rem;
+            margin-bottom: 0;
+            margin-left: 0;
+        }
+    }
+
+    &__leftLine {
+        // line-height: 2.4rem;
+        // margin-left: 500px;
+        // margin-bottom: 300px;
+        // position: absolute;
+        // top: -100%;
+
+        // margin-left: 0;
+        // margin-bottom: 0;
+        // top: -50%;
+        // left: 90%;
+        // transform: translate(-50%, -50%);
+
+        display: none;
+
+        @include minScreenSize($bp-laptop) {
+            width: min(8.5rem, 6vw);
+            display: block;
+            position: absolute;
+            top: -60%;
+            right: 0;
+        }
+    }
+
+    // &__header {
+    //     font-size: $font-size-xxl;
+    //     $fw-bold: 600;
+    //     line-height: 110%;
+    //     letter-spacing: -2.4px;
+    //     width: 130%;
+    // }
+}
+
+.suggestion-section {
+    background: $color-gradient-dark;
+    padding-top: 5.5rem;
+    padding-bottom: 5.6rem;
+    margin-bottom: 7.2rem;
+
+    @include minScreenSize($bp-tablet) {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        margin-bottom: 9.6rem;
+    }
+    @include minScreenSize($bp-laptop) {
+        padding-top: 7.2rem;
+        padding-bottom: 9.6rem;
+        margin-bottom: 12rem;
+        border-radius: 3.5rem;
+    }
+}
+
+.suggestion-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    @include minScreenSize($bp-laptop) {
+        gap: 3.2rem;
+        flex-direction: row;
+    }
+
+    &__item {
+        h3 {
+            margin-top: 3.2rem;
+            padding-bottom: 2.4rem;
+
+            @include minScreenSize($bp-tablet) {
+                margin-top: 0;
+            }
+            @include minScreenSize($bp-laptop) {
+                margin-top: 4.5rem;
+            }
+        }
+
+        @include minScreenSize($bp-tablet) {
+            display: grid;
+            align-items: center;
+            column-gap: 4rem;
+            grid-template-columns: 1fr auto;
+        }
+
+        @include minScreenSize($bp-laptop) {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+    }
+
+    &__item:nth-of-type(1)::before {
+        content: url(../assets/images/icon-eating.svg);
+        grid-row: 1 / span 2;
+    }
+
+    &__item:nth-of-type(2)::before {
+        content: url(../assets/images/icon-exercise.svg);
+        grid-row: 1 / span 2;
+    }
+
+    &__item:nth-of-type(3)::before {
+        content: url(../assets/images/icon-sleep.svg);
+        grid-row: 1 / span 2;
+    }
+}
+
+.limitation-section {
+    padding-bottom: 9.6rem;
+
+    @include minScreenSize($bp-laptop) {
+        position: relative;
+        padding-bottom: 64rem;
+    }
+
+    .flex-group {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 3.2rem;
+        text-align: center;
+        margin-bottom: 5.6rem;
+
+        @include minScreenSize($bp-laptop) {
+            position: relative;
+            gap: 3.5rem;
+            align-items: flex-start;
+            text-align: left;
+            @include maxWidth(min(56.4rem, 37vw));
+        }
+
+        .limitation-section-decorative-line {
+            display: none;
+
+            @include minScreenSize($bp-laptop) {
+                position: absolute;
+                display: block;
+                bottom: -100%;
+                bottom: -90%;
+                right: 50%;
+                right: 60%;
+                right: 55%;
+            }
+        }
+    }
+
+    .grid-group {
+        display: grid;
+        gap: 1.6rem;
+
+        @include minScreenSize($bp-tablet) {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        @include minScreenSize($bp-laptop) {
+            position: absolute;
+            top: 0;
+            right: 0;
+            @include maxWidth(96.1rem);
+            grid-template-columns: repeat(10, 4.65vw);
+            justify-content: end;
+            gap: 3.2rem;
+        }
+    }
+}
+
+.card {
+    padding: 2.4rem;
+    border-radius: 1.6rem;
+    box-shadow: 16px 32px 56px 0px $color-shadow-blue;
+
+    @include minScreenSize($bp-tablet) {
+        padding: 3.2rem;
+        grid-column: span 2;
+    }
+
+    &__header {
+        display: flex;
+        gap: 1.6rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@include minScreenSize($bp-tablet) {
+    .card:nth-of-type(5) {
+        grid-column: 2 / span 2;
+    }
+}
+
+@include minScreenSize($bp-laptop) {
+    .card:nth-of-type(1) {
+        grid-row: 1;
+        grid-column: 6 / span 4;
+    }
+    .card:nth-of-type(2) {
+        grid-row: 2;
+        grid-column: 3 / span 4;
+    }
+    .card:nth-of-type(3) {
+        grid-row: 2;
+        grid-column: 7 / span 4;
+    }
+    .card:nth-of-type(4) {
+        grid-row: 3;
+        grid-column: 1 / span 4;
+    }
+    .card:nth-of-type(5) {
+        grid-row: 3;
+        grid-column: 5 / span 4;
+    }
+}

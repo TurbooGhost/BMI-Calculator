@@ -1,0 +1,34 @@
+// Font Colors
+$color-primary: hsla(0, 0%, 100%, 1);
+$color-blue-accent: hsla(227, 92%, 58%, 1);
+$color-blue-accent-light: #e1e7fe;
+$color-grey-light: hsla(200, 24%, 88%, 1);
+$color-grey-medium: hsla(215, 17%, 44%, 1);
+$color-grey-dark: hsla(215, 31%, 21%, 1);
+$color-gradient-light: linear-gradient(290deg, rgba(214, 230, 254, 1) 0%, rgba(214, 252, 254, 0) 100%);
+$color-gradient-dark: linear-gradient(290deg, rgba(214, 230, 254, 0.3) 0%, rgba(214, 252, 254, 0) 100%);
+$color-shadow-blue: rgba(143, 174, 207, 0.25);
+
+// Font Sizes
+$font-size-s: 1.4rem;
+$font-size-m: 1.6rem;
+$font-size-ml: 2rem;
+$font-size-l: 2.4rem;
+$font-size-xl: 3.2rem;
+$font-size-xxl: 4.8rem;
+$font-size-xxxl: 6.2rem;
+
+//Screen Break Points
+$bp-xdesktop: 2560px;
+$bp-laptop-l: 1440px;
+$bp-laptop: 1024px;
+$bp-tablet: 768px;
+$bp-mobile-l: 425px;
+$bp-mobile-m: 375px;
+$bp-mobile-s: 320px;
+
+//Font Weights
+$fw-regular: 400;
+$fw-bold: 600;
+
+$ff-primary: Inter, sans-serif;

@@ -1,0 +1,17 @@
+@mixin flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin maxWidth($width) {
+    width: 100%;
+    max-width: $width;
+}
+
+@mixin minScreenSize($width) {
+    @media (min-width: $width) {
+        @content;
+    }
+}

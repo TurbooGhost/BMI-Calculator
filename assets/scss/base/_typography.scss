@@ -1,0 +1,88 @@
+@font-face {
+    font-family: "inter";
+    src: url("../assets/fonts/Inter-VariableFont_slnt\,wght.ttf");
+    font-weight: 100 900;
+}
+
+.bold {
+    font-weight: $fw-bold;
+}
+
+.c-white {
+    color: $color-primary;
+}
+
+.label-s {
+    font-size: $font-size-s;
+    font-style: normal;
+    line-height: 2.1rem;
+    color: $color-grey-medium;
+}
+
+.input-font {
+    font-size: $font-size-ml;
+    font-weight: $fw-bold;
+    letter-spacing: -0.12rem;
+    color: $color-grey-dark;
+}
+
+.label-l {
+    font-size: $font-size-m;
+    font-weight: $fw-bold;
+    font-style: normal;
+    line-height: 2.4rem;
+    color: $color-grey-dark;
+}
+
+p {
+    font-size: $font-size-m;
+    font-style: normal;
+    line-height: 2.4rem;
+    color: $color-grey-medium;
+}
+
+.p-s {
+    font-size: $font-size-s;
+    font-style: normal;
+    line-height: 2.1rem;
+    color: $color-primary;
+}
+
+h1 {
+    font-size: $font-size-xxl;
+    font-style: normal;
+    font-weight: $fw-bold;
+    line-height: 5.28rem;
+    letter-spacing: -0.24rem;
+    color: $color-grey-dark;
+
+    @include minScreenSize($bp-laptop) {
+        font-size: $font-size-xxxl;
+        line-height: 7.04rem;
+        letter-spacing: -0.32rem;
+    }
+}
+
+h2 {
+    font-size: $font-size-xl;
+    font-style: normal;
+    font-weight: $fw-bold;
+    line-height: 3.52rem;
+    letter-spacing: -0.16rem;
+    color: $color-grey-dark;
+
+    @include minScreenSize($bp-laptop) {
+        font-size: $font-size-xxxl;
+        line-height: 5.28rem;
+        letter-spacing: -0.24rem;
+    }
+}
+
+h3 {
+    font-size: $font-size-l;
+    font-style: normal;
+    font-weight: $fw-bold;
+    line-height: normal;
+    letter-spacing: -0.12rem;
+    color: $color-grey-dark;
+}
