@@ -1,10 +1,6 @@
 .main-page {
     width: 100%;
 
-    & > * {
-        width: 100%;
-    }
-
     @include minScreenSize($bp-laptop) {
         max-width: 160rem;
         padding-left: 2.4rem;
@@ -13,16 +9,20 @@
     }
 }
 
-.main_page .intro-section,
+.main_page > * {
+    width: 100%;
+}
+
+.intro-section,
 .suggestion-section,
 .limitation-section {
     padding-left: 2.35rem;
     padding-right: 2.35rem;
 
-    // @include minScreenSize($bp-tablet) {
-    //     padding-left: 4.1rem;
-    //     padding-right: 4.1rem;
-    // }
+    @include minScreenSize($bp-tablet) {
+        padding-left: 4.1rem;
+        padding-right: 4.1rem;
+    }
 }
 
 .article-section,
@@ -50,7 +50,7 @@
     gap: 2.4rem;
     text-align: center;
     border-radius: 0 0 3.5rem 3.5rem;
-    margin-bottom: 55.2rem;
+    margin-bottom: 40rem;
 
     @include minScreenSize($bp-tablet) {
         padding-bottom: 32.6rem;
@@ -192,7 +192,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]:hover {
-    border: 0.1rem solid $color-blue-accent;
+    border: 0.1rem solid$color-blue-accent;
 }
 
 input[type="radio"]:checked {
@@ -281,10 +281,8 @@ input[type="radio"]:checked {
 
 input[type="text"]:focus {
     outline: none;
-    border: 0.1rem solid $color-blue-accent;
+    border: 0.1rem solid$color-blue-accent;
 }
-
-// Section Two
 
 .article-section {
     margin-bottom: 7.16rem;
@@ -292,10 +290,10 @@ input[type="text"]:focus {
     flex-direction: column;
     align-items: center;
 
-    // @include minScreenSize($suggestion-section-bp-tablet) {
-    //     flex-direction: row;
-    //     gap: 7.5rem;
-    // }
+    @include minScreenSize($suggestion-section-bp-tablet) {
+        flex-direction: row;
+        gap: 7.5rem;
+    }
 
     @include minScreenSize($bp-laptop) {
         gap: 2rem;
@@ -311,18 +309,20 @@ input[type="text"]:focus {
     }
 
     .flex-group {
-        background-color: dodgerblue;
         padding: 0 2.35rem;
         display: flex;
         flex-direction: column;
         gap: 3.2rem;
-        // position: absolute;
-        // top: 90px;
 
         @include minScreenSize($bp-laptop) {
             position: relative;
             gap: 3.5rem;
-            @include maxWidth(46.5rem);
+            @include maxWidth(50rem);
+
+            & > *:not(:first-child) {
+                position: relative;
+                bottom: -3rem;
+            }
         }
     }
 
@@ -330,12 +330,8 @@ input[type="text"]:focus {
         @include maxWidth(37.5rem);
         margin-bottom: 4.8rem;
 
-        @include minScreenSize($bp-tablet) {
-            background-color: yellowgreen;
+        @include minScreenSize($suggestion-section-bp-tablet) {
             min-width: 40rem;
-            // margin-left: -40rem;
-            // margin-bottom: 0;
-            // margin-top: 0;
             margin-left: -7rem;
         }
 
@@ -346,37 +342,34 @@ input[type="text"]:focus {
         }
     }
 
-    &__leftLine {
-        // line-height: 2.4rem;
-        // margin-left: 500px;
-        // margin-bottom: 300px;
-        // position: absolute;
-        // top: -100%;
-
-        // margin-left: 0;
-        // margin-bottom: 0;
-        // top: -50%;
-        // left: 90%;
-        // transform: translate(-50%, -50%);
-
+    &__decorative-line {
         display: none;
 
         @include minScreenSize($bp-laptop) {
             width: min(8.5rem, 6vw);
             display: block;
             position: absolute;
-            top: -60%;
+            top: -75%;
+            top: -40%;
+            right: 0;
+        }
+
+        @include minScreenSize($bp-xdesktop) {
+            width: min(8.5rem, 6vw);
+            display: block;
+            position: absolute;
+            top: -75%;
+            right: 0;
+        }
+
+        @include minScreenSize(1440px) {
+            width: min(8.5rem, 6vw);
+            display: block;
+            position: absolute;
+            top: -75%;
             right: 0;
         }
     }
-
-    // &__header {
-    //     font-size: $font-size-xxl;
-    //     $fw-bold: 600;
-    //     line-height: 110%;
-    //     letter-spacing: -2.4px;
-    //     width: 130%;
-    // }
 }
 
 .suggestion-section {
@@ -437,17 +430,17 @@ input[type="text"]:focus {
     }
 
     &__item:nth-of-type(1)::before {
-        content: url(../assets/images/icon-eating.svg);
+        content: url(/assets/images/icon-eating.svg);
         grid-row: 1 / span 2;
     }
 
     &__item:nth-of-type(2)::before {
-        content: url(../assets/images/icon-exercise.svg);
+        content: url(/assets/images/icon-exercise.svg);
         grid-row: 1 / span 2;
     }
 
     &__item:nth-of-type(3)::before {
-        content: url(../assets/images/icon-sleep.svg);
+        content: url(/assets/images/icon-sleep.svg);
         grid-row: 1 / span 2;
     }
 }
@@ -482,11 +475,22 @@ input[type="text"]:focus {
             @include minScreenSize($bp-laptop) {
                 position: absolute;
                 display: block;
+                bottom: -60%;
+                right: 70%;
+            }
+
+            @include minScreenSize(1440px) {
+                position: absolute;
+                display: block;
                 bottom: -100%;
-                bottom: -90%;
                 right: 50%;
-                right: 60%;
-                right: 55%;
+            }
+
+            @include minScreenSize(2560px) {
+                position: absolute;
+                display: block;
+                bottom: -100%;
+                right: 70%;
             }
         }
     }
