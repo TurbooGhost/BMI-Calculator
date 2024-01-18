@@ -291,6 +291,10 @@ input[type="text"]:focus {
     flex-direction: column;
     align-items: center;
 
+    @media only screen and (min-width: 320px) and (max-width: 425px) {
+        margin-top: 50rem;
+    }
+
     @include minScreenSize($suggestion-section-bp-tablet) {
         flex-direction: row;
         gap: 7.5rem;

@@ -1,128 +1,84 @@
-let imperialInput = document.getElementById("imperial-input");
-let metricInput = document.getElementById("metric-input");
+const imperialInput = document.getElementById("imperial-input");
+const metricInput = document.getElementById("metric-input");
 
-let metricRadio = document.getElementById("metric-radio");
-let imperialRadio = document.getElementById("imperial-radio");
+const metricRadio = document.getElementById("metric-radio");
+const imperialRadio = document.getElementById("imperial-radio");
 
-metricRadio.addEventListener("change", function () {
-    metricInput.classList.remove("hidden");
-    imperialInput.classList.add("hidden");
-});
+metricRadio.addEventListener("change", toggleInputFields);
+imperialRadio.addEventListener("change", toggleInputFields);
 
-imperialRadio.addEventListener("change", function () {
-    imperialInput.classList.remove("hidden");
-    metricInput.classList.add("hidden");
-});
-
-let result = document.getElementById("result");
-
-let state = document.getElementById("state-description");
-let idealWeigth = document.getElementById("ideal-weigth");
-
-let welcomSection = document.getElementById("welcome-section");
-let resultSection = document.getElementById("result-section");
-
-let ft = undefined;
-let inc = undefined;
-let st = undefined;
-let lbs = undefined;
-
-let heightFt = document.getElementById("height-ft");
-let heightIn = document.getElementById("height-in");
-
-heightFt.addEventListener("input", function () {
-    ft = heightFt.value;
-    if (inc !== undefined && st !== undefined && lbs !== undefined) calculateBMIimperial(ft, inc, st, lbs);
-});
-
-heightIn.addEventListener("input", function () {
-    inc = heightIn.value;
-    if (ft !== undefined && st !== undefined && lbs !== undefined) calculateBMIimperial(ft, inc, st, lbs);
-});
-
-let weigthSt = document.getElementById("weight-st");
-let weigthLbs = document.getElementById("weight-lbs");
-
-weigthSt.addEventListener("input", function () {
-    st = weigthSt.value;
-    if (ft !== undefined && inc !== undefined && lbs !== undefined) calculateBMIimperial(ft, inc, st, lbs);
-});
-
-weigthLbs.addEventListener("input", function () {
-    lbs = weigthLbs.value;
-    if (ft !== undefined && inc !== undefined && st !== undefined) calculateBMIimperial(ft, inc, st, lbs);
-});
-
-let heightCm = document.getElementById("height-cm");
-let weigthKg = document.getElementById("weight-kg");
-
-let cm = undefined;
-let kg = undefined;
-
-heightCm.addEventListener("input", function () {
-    cm = heightCm.value;
-    if (kg !== undefined) calculateBMImetric(cm, kg);
-});
-
-weigthKg.addEventListener("input", function () {
-    kg = weigthKg.value;
-    if (cm !== undefined) calculateBMImetric(cm, kg);
-});
-
-function calculateBMImetric(cm, kg) {
-    let intCm = parseInt(cm);
-    let intKg = parseInt(kg);
-    let m = intCm / 100;
-    let bmi = Math.round((intKg / Math.pow(m, 2)) * 10) / 10;
-
-    welcomSection.classList.add("hidden");
-    resultSection.classList.remove("hidden");
-
-    if (bmi !== NaN) {
-        result.innerHTML = bmi;
-
-        changeState(bmi);
-
-        let from = Math.round(18.5 * Math.pow(m, 2) * 10) / 10;
-        let to = Math.round(24.9 * Math.pow(m, 2) * 10) / 10;
-        idealWeigth.innerHTML = from + "kgs - " + to + "kgs";
-    }
-
-    cm = undefined;
-    kg = undefined;
+function toggleInputFields() {
+    metricInput.classList.toggle("hidden", this !== metricRadio);
+    imperialInput.classList.toggle("hidden", this !== imperialRadio);
 }
 
-function calculateBMIimperial(ft, inc, st, lbs) {
-    let intFt = parseInt(ft);
-    let intInc = parseInt(inc);
-    let intSt = parseInt(st);
-    let intLbs = parseInt(lbs);
+const result = document.getElementById("result");
+const stateDescription = document.getElementById("state-description");
+const idealWeight = document.getElementById("ideal-weigth");
 
-    lbs = intSt * 14 + intLbs;
-    inc = intFt * 12 + intInc;
+const welcomeSection = document.getElementById("welcome-section");
+const resultSection = document.getElementById("result-section");
 
-    let bmi = 703 * (lbs / Math.pow(inc, 2));
+const heightFt = document.getElementById("height-ft");
+const heightIn = document.getElementById("height-in");
+const weightSt = document.getElementById("weight-st");
+const weightLbs = document.getElementById("weight-lbs");
 
-    welcomSection.classList.add("hidden");
+const heightCm = document.getElementById("height-cm");
+const weightKg = document.getElementById("weight-kg");
+
+[heightFt, heightIn, weightSt, weightLbs].forEach((element) =>
+    element.addEventListener("input", () => calculateBMIimperial())
+);
+
+[heightCm, weightKg].forEach((element) => element.addEventListener("input", () => calculateBMImetric()));
+
+function calculateBMImetric() {
+    const cm = parseInt(heightCm.value);
+    const kg = parseInt(weightKg.value);
+
+    if (!isNaN(cm) && !isNaN(kg)) {
+        const m = cm / 100;
+        const bmi = calculateBMI(kg, m);
+        displayResults(bmi, m, "kgs");
+    }
+}
+
+function calculateBMIimperial() {
+    const ft = parseInt(heightFt.value);
+    const inc = parseInt(heightIn.value);
+    const st = parseInt(weightSt.value);
+    const lbs = parseInt(weightLbs.value);
+
+    if ([ft, inc, st, lbs].every((value) => !isNaN(value))) {
+        const totalLbs = st * 14 + lbs;
+        const totalInches = ft * 12 + inc;
+        const bmi = (703 * totalLbs) / Math.pow(totalInches, 2);
+        displayResults(bmi, totalInches, "lbs");
+    }
+}
+
+function displayResults(bmi, length, unit) {
+    welcomeSection.classList.add("hidden");
     resultSection.classList.remove("hidden");
-    if (bmi !== NaN) {
-        result.innerHTML = Math.round(bmi * 10) / 10;
 
+    if (!isNaN(bmi)) {
+        result.textContent = Math.round(bmi * 10) / 10;
         changeState(bmi);
 
-        let from = Math.round((18.5 / 703) * Math.pow(inc, 2) * 10) / 10;
-        let to = Math.round((24.9 / 703) * Math.pow(inc, 2) * 10) / 10;
-        idealWeigth.innerHTML = from + "lbs - " + to + "lbs";
+        const from = Math.round(18.5 * Math.pow(length, 2) * 10) / 10;
+        const to = Math.round(24.9 * Math.pow(length, 2) * 10) / 10;
+        idealWeight.textContent = `${from}${unit} - ${to}${unit}`;
     }
-    ft = undefined;
-    inc = undefined;
-    st = undefined;
-    lbs = undefined;
+}
+
+function calculateBMI(weight, length) {
+    return Math.round((weight / Math.pow(length, 2)) * 10) / 10;
 }
 
 function changeState(bmi) {
-    if (bmi < 18.5) state.innerHTML = "Underweight";
-    else if (bmi < 25) state.innerHTML = "Healthy weight";
-    else if (bmi < 30) state.innerHTML = "Overweight";
-    else if (bmi >= 30) state.innerHTML = "Obese";
+    if (bmi < 18.5) stateDescription.textContent = "Underweight";
+    else if (bmi < 25) stateDescription.textContent = "Healthy weight";
+    else if (bmi < 30) stateDescription.textContent = "Overweight";
+    else stateDescription.textContent = "Obese";
 }
