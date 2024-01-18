@@ -286,6 +286,7 @@ input[type="text"]:focus {
 
 .article-section {
     margin-bottom: 7.16rem;
+    margin-top: 7.16rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -317,12 +318,37 @@ input[type="text"]:focus {
         @include minScreenSize($bp-laptop) {
             position: relative;
             gap: 3.5rem;
+            font-size: 20px;
             @include maxWidth(50rem);
 
             & > *:not(:first-child) {
                 position: relative;
                 bottom: -3rem;
             }
+        }
+
+        @include minScreenSize($bp-xdesktop) {
+            position: relative;
+            bottom: -5rem;
+            // gap: 3.5rem;
+            // @include maxWidth(50rem);
+
+            // & > *:not(:first-child) {
+            //     position: relative;
+            //     bottom: -3rem;
+            // }
+        }
+
+        @include minScreenSize($bp-laptop-l) {
+            position: relative;
+            bottom: -4rem;
+            // gap: 3.5rem;
+            // @include maxWidth(50rem);
+
+            // & > *:not(:first-child) {
+            //     position: relative;
+            //     bottom: -3rem;
+            // }
         }
     }
 
@@ -476,20 +502,20 @@ input[type="text"]:focus {
                 position: absolute;
                 display: block;
                 bottom: -60%;
-                right: 70%;
+                right: 50%;
             }
 
             @include minScreenSize(1440px) {
                 position: absolute;
                 display: block;
-                bottom: -100%;
+                bottom: -90%;
                 right: 50%;
             }
 
             @include minScreenSize(2560px) {
                 position: absolute;
                 display: block;
-                bottom: -100%;
+                bottom: -80%;
                 right: 70%;
             }
         }

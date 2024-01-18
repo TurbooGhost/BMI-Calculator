@@ -47,7 +47,7 @@ img {
 
 @font-face {
   font-family: "inter";
-  src: url("../assets/fonts/Inter-VariableFont_slnt,wght.ttf");
+  src: url("/assets/fonts/Inter-VariableFont_slnt,wght.ttf");
   font-weight: 100 900;
 }
 .bold {
@@ -424,6 +424,7 @@ input[type=text]:focus {
 
 .article-section {
   margin-bottom: 7.16rem;
+  margin-top: 7.16rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -459,12 +460,25 @@ input[type=text]:focus {
   .article-section .flex-group {
     position: relative;
     gap: 3.5rem;
+    font-size: 20px;
     width: 100%;
     max-width: 50rem;
   }
   .article-section .flex-group > *:not(:first-child) {
     position: relative;
     bottom: -3rem;
+  }
+}
+@media (min-width: 2560px) {
+  .article-section .flex-group {
+    position: relative;
+    bottom: -5rem;
+  }
+}
+@media (min-width: 1440px) {
+  .article-section .flex-group {
+    position: relative;
+    bottom: -4rem;
   }
 }
 .article-section__image {
@@ -628,14 +642,14 @@ input[type=text]:focus {
     position: absolute;
     display: block;
     bottom: -60%;
-    right: 70%;
+    right: 50%;
   }
 }
 @media (min-width: 1440px) {
   .limitation-section .flex-group .limitation-section-decorative-line {
     position: absolute;
     display: block;
-    bottom: -100%;
+    bottom: -90%;
     right: 50%;
   }
 }
@@ -643,7 +657,7 @@ input[type=text]:focus {
   .limitation-section .flex-group .limitation-section-decorative-line {
     position: absolute;
     display: block;
-    bottom: -100%;
+    bottom: -80%;
     right: 70%;
   }
 }
