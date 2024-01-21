@@ -82,3 +82,42 @@ function changeState(bmi) {
     else if (bmi < 30) stateDescription.textContent = "Overweight";
     else stateDescription.textContent = "Obese";
 }
+
+// FIX HERE MAKE BETTER
+
+function scl() {
+    var reveals = document.querySelectorAll(".suggestion-list");
+
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        // Check if the element is within the viewport
+        if (elementTop < windowHeight - elementVisible && elementTop > -elementVisible) {
+            reveals[i].classList.add("active");
+        } else {
+            reveals[i].classList.remove("active");
+        }
+    }
+}
+
+window.addEventListener("scroll", scl);
+
+function reveal() {
+    var reveals = document.querySelectorAll(".limitation-section");
+
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        } else {
+            reveals[i].classList.remove("active");
+        }
+    }
+}
+
+window.addEventListener("scroll", reveal);

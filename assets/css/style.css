@@ -135,22 +135,89 @@ h3 {
   color: hsl(215, 31%, 21%);
 }
 
-body#style-7::-webkit-scrollbar-track {
+#style-7::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #f5f5f5;
   border-radius: 10px;
 }
 
-body#style-7::-webkit-scrollbar {
+#style-7::-webkit-scrollbar {
   width: 10px;
   background-color: #f5f5f5;
 }
 
-body#style-7::-webkit-scrollbar-thumb {
+#style-7::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(122, 153, 217)), color-stop(0.72, rgb(73, 125, 189)), color-stop(0.86, rgb(28, 58, 148)));
 }
 
+@keyframes dropInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-100rem);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100rem);
+  }
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .main-page {
   width: 100%;
 }
@@ -211,6 +278,8 @@ body#style-7::-webkit-scrollbar-thumb {
   text-align: center;
   border-radius: 0 0 3.5rem 3.5rem;
   margin-bottom: 40rem;
+  animation: dropInFromTop 1.5s;
+  backface-visibility: hidden;
 }
 @media (min-width: 600px) {
   .intro-section {
@@ -476,6 +545,8 @@ input[type=text]:focus {
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
+  animation: moveInRight 1.5s;
+  backface-visibility: hidden;
 }
 @media (min-width: 1024px) {
   .article-section .flex-group {
@@ -503,6 +574,8 @@ input[type=text]:focus {
   }
 }
 .article-section__image {
+  animation: moveInLeft 1.5s;
+  backface-visibility: hidden;
   width: 100%;
   max-width: 37.5rem;
   margin-bottom: 4.8rem;
@@ -579,6 +652,17 @@ input[type=text]:focus {
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  transform: translateY(50px);
+  opacity: 1;
+  transition: 1s all ease;
+}
+.suggestion-list.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+.suggestion-list.active {
+  transform: translateY(0);
+  opacity: 1;
 }
 @media (min-width: 1024px) {
   .suggestion-list {
@@ -630,6 +714,13 @@ input[type=text]:focus {
 
 .limitation-section {
   padding-bottom: 9.6rem;
+  opacity: 0;
+  transition: opacity 1.5s ease-out, transform 2s ease-out;
+  transition-delay: 0.5s;
+}
+.limitation-section.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 @media (min-width: 1024px) {
   .limitation-section {
@@ -644,6 +735,13 @@ input[type=text]:focus {
   gap: 3.2rem;
   text-align: center;
   margin-bottom: 5.6rem;
+  transition: opacity 1.5s ease-out, transform 1s ease-out;
+  transition-delay: 0.5s;
+}
+.limitation-section .flex-group.active {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
 }
 @media (min-width: 1024px) {
   .limitation-section .flex-group {
@@ -685,6 +783,12 @@ input[type=text]:focus {
 .limitation-section .grid-group {
   display: grid;
   gap: 1.6rem;
+  transition: opacity 2s ease-out, transform 2s ease-out;
+  transition-delay: 0.5s;
+}
+.limitation-section .grid-group.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 @media (min-width: 600px) {
   .limitation-section .grid-group {
@@ -708,6 +812,15 @@ input[type=text]:focus {
   padding: 2.4rem;
   border-radius: 1.6rem;
   box-shadow: 16px 32px 56px 0px rgba(143, 174, 207, 0.25);
+  opacity: 0.9;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease-out, transform 1s ease-out;
+  transition-delay: 0.5s;
+}
+.card.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 @media (min-width: 600px) {
   .card {

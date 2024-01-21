@@ -52,6 +52,9 @@
     border-radius: 0 0 3.5rem 3.5rem;
     margin-bottom: 40rem;
 
+    animation: dropInFromTop 1.5s;
+    backface-visibility: hidden;
+
     @include minScreenSize($bp-tablet) {
         padding-bottom: 32.6rem;
         margin-bottom: 27.7rem;
@@ -319,6 +322,9 @@ input[type="text"]:focus {
         flex-direction: column;
         gap: 3.2rem;
 
+        animation: moveInRight 1.5s;
+        backface-visibility: hidden;
+
         @include minScreenSize($bp-laptop) {
             position: relative;
             gap: 3.5rem;
@@ -334,29 +340,18 @@ input[type="text"]:focus {
         @include minScreenSize($bp-xdesktop) {
             position: relative;
             bottom: -5rem;
-            // gap: 3.5rem;
-            // @include maxWidth(50rem);
-
-            // & > *:not(:first-child) {
-            //     position: relative;
-            //     bottom: -3rem;
-            // }
         }
 
         @include minScreenSize($bp-laptop-l) {
             position: relative;
             bottom: -4rem;
-            // gap: 3.5rem;
-            // @include maxWidth(50rem);
-
-            // & > *:not(:first-child) {
-            //     position: relative;
-            //     bottom: -3rem;
-            // }
         }
     }
 
     &__image {
+        animation: moveInLeft 1.5s;
+        backface-visibility: hidden;
+
         @include maxWidth(37.5rem);
         margin-bottom: 4.8rem;
 
@@ -427,6 +422,20 @@ input[type="text"]:focus {
     flex-direction: column;
     gap: 4rem;
 
+    transform: translateY(50px);
+    opacity: 1;
+    transition: 1s all ease;
+
+    &.visible {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    &.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
     @include minScreenSize($bp-laptop) {
         gap: 3.2rem;
         flex-direction: row;
@@ -478,6 +487,17 @@ input[type="text"]:focus {
 .limitation-section {
     padding-bottom: 9.6rem;
 
+    opacity: 0;
+    transition:
+        opacity 1.5s ease-out,
+        transform 2s ease-out;
+    transition-delay: 0.5s;
+
+    &.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
     @include minScreenSize($bp-laptop) {
         position: relative;
         padding-bottom: 64rem;
@@ -490,6 +510,17 @@ input[type="text"]:focus {
         gap: 3.2rem;
         text-align: center;
         margin-bottom: 5.6rem;
+
+        transition:
+            opacity 1.5s ease-out,
+            transform 1s ease-out;
+        transition-delay: 0.5s;
+
+        &.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0s;
+        }
 
         @include minScreenSize($bp-laptop) {
             position: relative;
@@ -529,6 +560,16 @@ input[type="text"]:focus {
         display: grid;
         gap: 1.6rem;
 
+        transition:
+            opacity 2s ease-out,
+            transform 2s ease-out;
+        transition-delay: 0.5s;
+
+        &.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         @include minScreenSize($bp-tablet) {
             grid-template-columns: 1fr 1fr 1fr 1fr;
         }
@@ -549,6 +590,22 @@ input[type="text"]:focus {
     padding: 2.4rem;
     border-radius: 1.6rem;
     box-shadow: 16px 32px 56px 0px $color-shadow-blue;
+
+    opacity: 0.9;
+    transition:
+        opacity 0.5s ease-out,
+        transform 0.5s ease-out;
+    transform: translateY(20px);
+
+    transition:
+        opacity 1.5s ease-out,
+        transform 1s ease-out;
+    transition-delay: 0.5s;
+
+    &.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
     @include minScreenSize($bp-tablet) {
         padding: 3.2rem;

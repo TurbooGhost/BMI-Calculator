@@ -15,3 +15,24 @@
         @content;
     }
 }
+
+@mixin fadeInUpAnimation($duration: 1s, $ease: ease-out) {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity $duration $ease,
+        transform $duration $ease;
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@mixin fadeInAnimation {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
