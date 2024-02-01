@@ -420,7 +420,7 @@ input[type="text"]:focus {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 6rem;
 
     transform: translateY(50px);
     opacity: 1;
@@ -459,6 +459,7 @@ input[type="text"]:focus {
             display: grid;
             align-items: center;
             column-gap: 4rem;
+            column-gap: 6rem;
             // grid-template-columns: 1fr auto;
         }
 
