@@ -83,41 +83,40 @@ function changeState(bmi) {
     else stateDescription.textContent = "Obese";
 }
 
-// FIX HERE MAKE BETTER
+// Scroll effect
+const scrollEffect = () => {
+    const reveals = document.querySelectorAll(".suggestion-list");
+    const windowHeight = window.innerHeight;
+    const elementVisible = 150;
 
-function scl() {
-    var reveals = document.querySelectorAll(".suggestion-list");
+    reveals.forEach((reveal) => {
+        const elementTop = reveal.getBoundingClientRect().top;
 
-    for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 150;
-
-        // Check if the element is within the viewport
         if (elementTop < windowHeight - elementVisible && elementTop > -elementVisible) {
-            reveals[i].classList.add("active");
+            reveal.classList.add("active");
         } else {
-            reveals[i].classList.remove("active");
+            reveal.classList.remove("active");
         }
-    }
-}
+    });
+};
 
-window.addEventListener("scroll", scl);
+window.addEventListener("scroll", scrollEffect);
 
-function reveal() {
-    var reveals = document.querySelectorAll(".limitation-section");
+// Detects elements in the viewport and toggles their visibility.
+const reveal = () => {
+    const reveals = document.querySelectorAll(".limitation-section");
+    const windowHeight = window.innerHeight;
+    const elementVisible = 150;
 
-    for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 150;
+    reveals.forEach((reveal) => {
+        const elementTop = reveal.getBoundingClientRect().top;
 
         if (elementTop < windowHeight - elementVisible) {
-            reveals[i].classList.add("active");
+            reveal.classList.add("active");
         } else {
-            reveals[i].classList.remove("active");
+            reveal.classList.remove("active");
         }
-    }
-}
+    });
+};
 
 window.addEventListener("scroll", reveal);
