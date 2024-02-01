@@ -460,7 +460,6 @@ input[type="text"]:focus {
             align-items: center;
             column-gap: 4rem;
             column-gap: 6rem;
-            // grid-template-columns: 1fr auto;
         }
 
         @include minScreenSize($bp-laptop) {
@@ -469,21 +468,6 @@ input[type="text"]:focus {
             flex-direction: column;
         }
     }
-
-    //     &__item:nth-of-type(1)::before {
-    //         content: url(/assets/images/icon-eating.svg);
-    //         grid-row: 1 / span 2;
-    //     }
-
-    //     &__item:nth-of-type(2)::before {
-    //         content: url(/assets/images/icon-exercise.svg);
-    //         grid-row: 1 / span 2;
-    //     }
-
-    //     &__item:nth-of-type(3)::before {
-    //         content: url(/assets/images/icon-sleep.svg);
-    //         grid-row: 1 / span 2;
-    //     }
 }
 
 .limitation-section {

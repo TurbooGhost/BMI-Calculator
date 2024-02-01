@@ -7,6 +7,7 @@ const imperialRadio = document.getElementById("imperial-radio");
 metricRadio.addEventListener("change", toggleInputFields);
 imperialRadio.addEventListener("change", toggleInputFields);
 
+// Toggle visibility of metric and imperial input fields
 function toggleInputFields() {
     metricInput.classList.toggle("hidden", this !== metricRadio);
     imperialInput.classList.toggle("hidden", this !== imperialRadio);
@@ -33,6 +34,7 @@ const weightKg = document.getElementById("weight-kg");
 
 [heightCm, weightKg].forEach((element) => element.addEventListener("input", () => calculateBMImetric()));
 
+// Calculate BMI using metric units
 function calculateBMImetric() {
     const cm = parseInt(heightCm.value);
     const kg = parseInt(weightKg.value);
@@ -44,6 +46,7 @@ function calculateBMImetric() {
     }
 }
 
+// Calculate BMI using imperial units
 function calculateBMIimperial() {
     const ft = parseInt(heightFt.value);
     const inc = parseInt(heightIn.value);
@@ -58,6 +61,7 @@ function calculateBMIimperial() {
     }
 }
 
+//  Display BMI results and ideal weight range
 function displayResults(bmi, length, unit) {
     welcomeSection.classList.add("hidden");
     resultSection.classList.remove("hidden");
@@ -72,10 +76,12 @@ function displayResults(bmi, length, unit) {
     }
 }
 
+// Compute BMI from weight and length
 function calculateBMI(weight, length) {
     return Math.round((weight / Math.pow(length, 2)) * 10) / 10;
 }
 
+// Update weight status description based on BMI
 function changeState(bmi) {
     if (bmi < 18.5) stateDescription.textContent = "Underweight";
     else if (bmi < 25) stateDescription.textContent = "Healthy weight";
