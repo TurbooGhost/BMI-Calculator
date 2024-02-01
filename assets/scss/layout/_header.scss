@@ -458,7 +458,7 @@ input[type="text"]:focus {
             display: grid;
             align-items: center;
             column-gap: 4rem;
-            grid-template-columns: 1fr auto;
+            // grid-template-columns: 1fr auto;
         }
 
         @include minScreenSize($bp-laptop) {
@@ -468,29 +468,27 @@ input[type="text"]:focus {
         }
     }
 
-    &__item:nth-of-type(1)::before {
-        content: url(/assets/images/icon-eating.svg);
-        grid-row: 1 / span 2;
-    }
+    //     &__item:nth-of-type(1)::before {
+    //         content: url(/assets/images/icon-eating.svg);
+    //         grid-row: 1 / span 2;
+    //     }
 
-    &__item:nth-of-type(2)::before {
-        content: url(/assets/images/icon-exercise.svg);
-        grid-row: 1 / span 2;
-    }
+    //     &__item:nth-of-type(2)::before {
+    //         content: url(/assets/images/icon-exercise.svg);
+    //         grid-row: 1 / span 2;
+    //     }
 
-    &__item:nth-of-type(3)::before {
-        content: url(/assets/images/icon-sleep.svg);
-        grid-row: 1 / span 2;
-    }
+    //     &__item:nth-of-type(3)::before {
+    //         content: url(/assets/images/icon-sleep.svg);
+    //         grid-row: 1 / span 2;
+    //     }
 }
 
 .limitation-section {
     padding-bottom: 9.6rem;
 
     opacity: 0;
-    transition:
-        opacity 1.5s ease-out,
-        transform 2s ease-out;
+    transition: opacity 1.5s ease-out, transform 2s ease-out;
     transition-delay: 0.5s;
 
     &.active {
@@ -511,9 +509,7 @@ input[type="text"]:focus {
         text-align: center;
         margin-bottom: 5.6rem;
 
-        transition:
-            opacity 1.5s ease-out,
-            transform 1s ease-out;
+        transition: opacity 1.5s ease-out, transform 1s ease-out;
         transition-delay: 0.5s;
 
         &.active {
@@ -560,9 +556,7 @@ input[type="text"]:focus {
         display: grid;
         gap: 1.6rem;
 
-        transition:
-            opacity 2s ease-out,
-            transform 2s ease-out;
+        transition: opacity 2s ease-out, transform 2s ease-out;
         transition-delay: 0.5s;
 
         &.active {
@@ -592,14 +586,10 @@ input[type="text"]:focus {
     box-shadow: 16px 32px 56px 0px $color-shadow-blue;
 
     opacity: 0.9;
-    transition:
-        opacity 0.5s ease-out,
-        transform 0.5s ease-out;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
     transform: translateY(20px);
 
-    transition:
-        opacity 1.5s ease-out,
-        transform 1s ease-out;
+    transition: opacity 1.5s ease-out, transform 1s ease-out;
     transition-delay: 0.5s;
 
     &.active {
